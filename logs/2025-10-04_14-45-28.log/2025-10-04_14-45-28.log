@@ -1,0 +1,40 @@
+[2025-10-04 14:45:30,567] 23 root - INFO - Entered the data ingestion method or component
+[2025-10-04 14:45:30,578] 27 root - INFO - Read the dataset as dataframe
+[2025-10-04 14:45:30,589] 39 root - INFO - Train test split initiated
+[2025-10-04 14:45:30,596] 45 root - INFO - Ingestion of the data is completed
+[2025-10-04 14:45:30,622] 174 root - INFO - Read train and test data completed
+[2025-10-04 14:45:30,624] 188 root - INFO - Applying preprocessing on train and test data
+[2025-10-04 14:45:30,658] 196 root - INFO - Saving preprocessing object
+[2025-10-04 14:45:30,659] 29 root - INFO - Splitting train/test arrays
+[2025-10-04 14:45:30,659] 46 root - INFO - Running GridSearchCV for Logistic Regression
+[2025-10-04 14:45:37,877] 57 root - INFO - Best parameters found: {'C': 0.1, 'fit_intercept': True, 'penalty': 'l2'}
+[2025-10-04 14:45:37,931] 67 root - INFO - 
+Cross-Validation Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.82      0.84      0.83       444
+         1.0       0.73      0.69      0.71       268
+
+    accuracy                           0.79       712
+   macro avg       0.77      0.77      0.77       712
+weighted avg       0.78      0.79      0.79       712
+
+[2025-10-04 14:45:37,933] 70 root - INFO - Cross-Validation Confusion Matrix:
+[[375  69]
+ [ 83 185]]
+[2025-10-04 14:45:37,984] 74 root - INFO - Cross-Validation Accuracy: 0.7866 ± 0.0271
+[2025-10-04 14:45:38,000] 88 root - INFO - 
+Test Set Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.82      0.83      0.82       105
+         1.0       0.75      0.74      0.75        74
+
+    accuracy                           0.79       179
+   macro avg       0.79      0.79      0.79       179
+weighted avg       0.79      0.79      0.79       179
+
+[2025-10-04 14:45:38,002] 91 root - INFO - Test Set Confusion Matrix:
+[[87 18]
+ [19 55]]
+[2025-10-04 14:45:38,002] 94 root - INFO - Final Test Accuracy: 0.7932960893854749, Precision: 0.7534246575342466, Recall: 0.7432432432432432, F1: 0.7482993197278912, ROC-AUC: 0.85984555984556

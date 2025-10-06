@@ -1,0 +1,20 @@
+notes.txt
+# Ignore environment folders
+env/
+venv/
+.venv/
+
+# Ignore Python cache and build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Ignore IDE/project files
+.idea/
+.vscode/
+.DS_Store

@@ -1,0 +1,30 @@
+[2025-10-05 20:42:44,707] 23 root - INFO - Entered the data ingestion method or component
+[2025-10-05 20:42:44,711] 27 root - INFO - Read the dataset as dataframe
+[2025-10-05 20:42:44,715] 39 root - INFO - Train test split initiated
+[2025-10-05 20:42:44,720] 45 root - INFO - Ingestion of the data is completed
+[2025-10-05 20:42:44,746] 175 root - INFO - Read train and test data completed
+[2025-10-05 20:42:44,747] 189 root - INFO - Applying preprocessing on train and test data
+[2025-10-05 20:42:44,769] 197 root - INFO - Saving preprocessing object
+[2025-10-05 20:42:44,770] 52 root - INFO - Splitting train/test arrays
+[2025-10-05 20:42:44,770] 125 root - INFO - Running GridSearchCV for LogisticRegression
+[2025-10-05 20:42:47,734] 139 root - INFO - LogisticRegression CV Accuracy: 0.7922 ± 0.0237
+[2025-10-05 20:42:47,738] 155 root - INFO - LogisticRegression Test Accuracy: 0.7877, Precision: 0.7432, Recall: 0.7432, F1: 0.7432, ROC-AUC: 0.8513513513513513
+[2025-10-05 20:42:47,738] 125 root - INFO - Running GridSearchCV for DecisionTree
+[2025-10-05 20:42:47,858] 139 root - INFO - DecisionTree CV Accuracy: 0.7767 ± 0.0256
+[2025-10-05 20:42:47,861] 155 root - INFO - DecisionTree Test Accuracy: 0.7821, Precision: 0.7160, Recall: 0.7838, F1: 0.7484, ROC-AUC: 0.8327541827541827
+[2025-10-05 20:42:47,861] 125 root - INFO - Running GridSearchCV for RandomForest
+[2025-10-05 20:42:51,040] 139 root - INFO - RandomForest CV Accuracy: 0.7866 ± 0.0286
+[2025-10-05 20:42:51,048] 155 root - INFO - RandomForest Test Accuracy: 0.7933, Precision: 0.7606, Recall: 0.7297, F1: 0.7448, ROC-AUC: 0.8601029601029602
+[2025-10-05 20:42:51,048] 125 root - INFO - Running GridSearchCV for GradientBoosting
+[2025-10-05 20:42:53,808] 139 root - INFO - GradientBoosting CV Accuracy: 0.8034 ± 0.0319
+[2025-10-05 20:42:53,812] 155 root - INFO - GradientBoosting Test Accuracy: 0.8156, Precision: 0.7887, Recall: 0.7568, F1: 0.7724, ROC-AUC: 0.863063063063063
+[2025-10-05 20:42:53,812] 125 root - INFO - Running GridSearchCV for SVC
+[2025-10-05 20:42:54,321] 139 root - INFO - SVC CV Accuracy: 0.7908 ± 0.0241
+[2025-10-05 20:42:54,333] 155 root - INFO - SVC Test Accuracy: 0.7877, Precision: 0.7500, Recall: 0.7297, F1: 0.7397, ROC-AUC: 0.8256113256113257
+[2025-10-05 20:42:54,333] 125 root - INFO - Running GridSearchCV for KNN
+[2025-10-05 20:42:57,242] 139 root - INFO - KNN CV Accuracy: 0.7795 ± 0.0221
+[2025-10-05 20:42:57,258] 155 root - INFO - KNN Test Accuracy: 0.7765, Precision: 0.7576, Recall: 0.6757, F1: 0.7143, ROC-AUC: 0.842921492921493
+[2025-10-05 20:42:57,258] 125 root - INFO - Running GridSearchCV for XGBoost
+[2025-10-05 20:42:58,977] 139 root - INFO - XGBoost CV Accuracy: 0.8020 ± 0.0475
+[2025-10-05 20:42:58,991] 155 root - INFO - XGBoost Test Accuracy: 0.7989, Precision: 0.7794, Recall: 0.7162, F1: 0.7465, ROC-AUC: 0.8725225225225225
+[2025-10-05 20:42:59,001] 195 root - INFO - Best overall model: GradientBoosting with Test Accuracy 0.8156
