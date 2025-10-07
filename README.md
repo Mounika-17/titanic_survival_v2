@@ -78,26 +78,26 @@ Performed in `notebook/eda_model_training.ipynb`:
 - Containerized Flask app  
 - Deployed to AWS Elastic Beanstalk   
 
-⚙️ Installation and Setup  
-1. Clone the repository  
+##⚙️ Installation and Setup  
+### 1. Clone the repository  
 git clone https://github.com/Mounika-17/titanic_survival_prediction.git  
 cd titanic_survival_prediction  
 
-2. Create a virtual environment  
+### 2. Create a virtual environment  
 python -m venv env  
 env\Scripts\activate        # For Windows  
 source env/bin/activate     # For macOS/Linux  
 
-3. Install dependencies  
+### 3. Install dependencies  
 pip install -r requirements.txt  
 
-4. Run the application locally  
+### 4. Run the application locally  
 python application.py  
 
-5. Open the app  
+### 5. Open the app  
 Navigate to http://127.0.0.1:5000/ in your browser.  
 
-📦 Deployment (AWS Elastic Beanstalk)  
+## 📦 Deployment (AWS Elastic Beanstalk)  
 Create an AWS account and install the AWS CLI.  
 Initialize Elastic Beanstalk:  
 eb init  
@@ -106,34 +106,36 @@ eb open
 The app will be live on your AWS URL.  
 
 🧪 Model Performance  
-Metric	   Value  
-Accuracy   	81.56%  
-Precision	  78.87%  
-Recall	    75.68%  
-F1-Score	  77.24%  
+| Metric    | Value  |  
+| --------- | ------ |  
+| Accuracy  | 81.56% |  
+| Precision | 78.87% |  
+| Recall    | 75.68% |  
+| F1-Score  | 77.24% |  
 
-📁 Artifacts
-model.pkl – Trained ML model
-preprocessor.pkl – Feature transformation pipeline
-train.csv & test.csv – Datasets used for training and testing
 
-🛠️ Logging and Exception Handling
-All logs are stored in the logs/ directory.
-Custom logger.py and exception.py modules handle runtime events and errors gracefully.
+## 📁 Artifacts
+model.pkl – Trained ML model  
+preprocessor.pkl – Feature transformation pipeline  
+train.csv & test.csv – Datasets used for training and testing  
 
-📘 Future Enhancements
-Add more models for comparison
-Integrate frontend UI improvements
-Deploy via Docker + AWS ECS
+## 🛠️ Logging and Exception Handling  
+All logs are stored in the logs/ directory.  
+Custom logger.py and exception.py modules handle runtime events and errors gracefully.  
 
-🤝 Contributing
-Contributions are welcome!
-Feel free to fork the repository and submit a pull request with improvements.
+## 📘 Future Enhancements  
+Add more models for comparison  
+Integrate frontend UI improvements  
+Deploy via Docker + AWS ECS  
 
-🧑‍💻 Author
-Mounika Maradana
-📧 https://www.linkedin.com/in/mounikamaradana/
-🌐 https://github.com/Mounika-17
+## 🤝 Contributing  
+Contributions are welcome!  
+Feel free to fork the repository and submit a pull request with improvements.  
 
-🪪 License
-This project is licensed under the MIT License.
+## 🧑‍💻 Author  
+Mounika Maradana  
+📧 https://www.linkedin.com/in/mounikamaradana/  
+🌐 https://github.com/Mounika-17  
+
+## 🪪 License  
+This project is licensed under the MIT License.  
