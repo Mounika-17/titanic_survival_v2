@@ -16,7 +16,7 @@ def get_requirements(file_path:str)->list[str]:
     return requirements
 
 setup(    
-    name='mlproject',
+    name='titanic-survival-prediction',
     version='0.0.1',
     author='Mounika Maradana',
     author_email='maradana.mounika17@gmail.com',
