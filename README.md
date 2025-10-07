@@ -1,5 +1,3 @@
-formatted README.md — just copy and paste this version directly into your file. It will render perfectly on GitHub with proper spacing, bullets, and headings.
-
 #  Titanic Survival Prediction | End-to-End Machine Learning Project
 
 This project predicts whether a passenger survived in the Titanic disaster using machine learning techniques.  
