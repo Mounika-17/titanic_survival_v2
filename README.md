@@ -80,7 +80,7 @@ Performed in `notebook/eda_model_training.ipynb`:
 
 ## ⚙️ Installation and Setup  
 ### 1. Clone the repository  
-git clone https://github.com/Mounika-17/titanic_survival_prediction.git  
+git clone https://github.com/Mounika-17/titanic-survival-prediction-ml.git  
 cd titanic_survival_prediction  
 
 ### 2. Create a virtual environment  
