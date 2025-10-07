@@ -78,7 +78,7 @@ Performed in `notebook/eda_model_training.ipynb`:
 - Containerized Flask app  
 - Deployed to AWS Elastic Beanstalk   
 
-##⚙️ Installation and Setup  
+## ⚙️ Installation and Setup  
 ### 1. Clone the repository  
 git clone https://github.com/Mounika-17/titanic_survival_prediction.git  
 cd titanic_survival_prediction  
