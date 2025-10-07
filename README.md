@@ -73,12 +73,12 @@ cd titanic_survival_prediction
 2. Create a virtual environment
 python -m venv env
 env\Scripts\activate        # For Windows
-# source env/bin/activate   # For macOS/Linux
+source env/bin/activate     # For macOS/Linux
 
 3. Install dependencies
 pip install -r requirements.txt
 
-4.** Run the application locally**
+4. Run the application locally
 python application.py
 
 5. Open the app
