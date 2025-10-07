@@ -67,7 +67,7 @@ Deployed to AWS Elastic Beanstalk
 
 ⚙️ Installation and Setup
 1. Clone the repository
-git clone https://github.com/<your-username>/titanic_survival_prediction.git
+git clone https://github.com/Mounika-17/titanic_survival_prediction.git
 cd titanic_survival_prediction
 
 2. Create a virtual environment
