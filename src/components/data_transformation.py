@@ -120,6 +120,8 @@ class Binner(BaseEstimator, TransformerMixin):
 
     def transform(self, X):
         X_ = X.copy()
+        # pd.cut() — a pandas function that divides continuous data into bins.include_lowest=True: ensures the lowest value is included in the first bin.
+        # This Binner class is used in data preprocessing pipelines to bin continuous numerical features into categorical ranges.
         X_[self.column + "Bin"] = pd.cut(
             X_[self.column], bins=self.bins, labels=self.labels, include_lowest=True
         )
