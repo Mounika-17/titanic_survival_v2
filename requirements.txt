@@ -13,4 +13,5 @@ xgboost
 catboost
 flask
 dill
-# -e .
+# -e . --> tells pip to install your project as a package in editable mode.Add your project root (e.g., titanic_survival_prediction/) to Python’s environment path. This lets you import modules like: from src.exception import CustomException from anywhere, even from outside the src/ folder.
+-e .
