@@ -8,6 +8,7 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from xgboost import XGBClassifier
 from sklearn.pipeline import Pipeline
+import pandas as pd
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -133,10 +134,20 @@ class ModelTrainer:
                     ("preprocessor", preprocessor),
                     ("model", model)
                 ])
+                '''
+                The double underscore __ in model__ is just a naming convention used by scikit-learn to access parameters inside a Pipeline step.
+                model has the different parameters inside it like if we consider SVC- we have C,kernel to access these parameters we append "model__" to the parameters like model__C 
+                EXample: 
+                model → the step name in the pipeline
+                __ → “go inside this step”
+                C → the actual parameter name of SVC
+                '''
+                # Prefix all parameters with "model__"
+                prefixed_param_grid = {f"model__{key}": value for key, value in param_grid.items()}
 
                 grid_search = GridSearchCV(
                     estimator=pipeline,
-                    param_grid=param_grid,
+                    param_grid=prefixed_param_grid, # use prefixed grid
                     cv=cv,
                     scoring='accuracy',
                     n_jobs=-1
