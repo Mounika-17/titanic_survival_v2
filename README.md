@@ -108,20 +108,19 @@ The app will be live on your AWS URL.
 
 ## 🧪 Model Performance
 
-Multiple models were trained and evaluated using cross-validation and test metrics.  
-Among all models, **Gradient Boosting** performed the best.
+I evaluated multiple machine learning models to predict the target outcome. The models were assessed using cross-validation accuracy and test set metrics including precision, recall, F1 score, and ROC-AUC. Among all models, XGBoost performed the best, achieving the highest test accuracy and balanced overall performance across all metrics.
 
-| Model              | CV Accuracy (± Std) | Test Accuracy | Precision | Recall | F1-Score | ROC-AUC |
-|--------------------|---------------------|----------------|------------|---------|-----------|----------|
-| Logistic Regression | 0.7922 ± 0.0237 | 0.7877 | 0.7432 | 0.7432 | 0.7432 | 0.8513 |
-| Decision Tree       | 0.7767 ± 0.0256 | 0.7821 | 0.7160 | 0.7838 | 0.7484 | 0.8328 |
-| Random Forest       | 0.7866 ± 0.0286 | 0.7933 | 0.7606 | 0.7297 | 0.7448 | 0.8601 |
-| Gradient Boosting ⭐ | **0.8034 ± 0.0319** | **0.8156** | **0.7887** | **0.7568** | **0.7724** | **0.8631** |
-| SVC                 | 0.7908 ± 0.0241 | 0.7877 | 0.7500 | 0.7297 | 0.7397 | 0.8256 |
-| KNN                 | 0.7795 ± 0.0221 | 0.7765 | 0.7576 | 0.6757 | 0.7143 | 0.8429 |
-| XGBoost             | 0.8020 ± 0.0475 | 0.7989 | 0.7794 | 0.7162 | 0.7465 | 0.8725 |
+| Model              | CV Accuracy (mean ± std) | Test Accuracy | Precision  | Recall     | F1 Score   | ROC-AUC    |
+| ------------------ | ------------------------ | ------------- | ---------- | ---------- | ---------- | ---------- |
+| LogisticRegression | 0.7894 ± 0.0233          | 0.7821        | 0.7333     | 0.7432     | 0.7383     | 0.8425     |
+| DecisionTree       | 0.7753 ± 0.0258          | 0.7821        | 0.7160     | 0.7838     | 0.7484     | 0.8328     |
+| RandomForest       | 0.7950 ± 0.0321          | 0.7989        | 0.7714     | 0.7297     | 0.7500     | 0.8591     |
+| GradientBoosting   | 0.8034 ± 0.0351          | 0.8101        | 0.7703     | 0.7703     | 0.7703     | 0.8674     |
+| SVC                | 0.7922 ± 0.0255          | 0.7877        | 0.7500     | 0.7297     | 0.7397     | 0.8256     |
+| KNN                | 0.7781 ± 0.0222          | 0.7765        | 0.7576     | 0.6757     | 0.7143     | 0.8429     |
+| **XGBoost**        | **0.8034 ± 0.0362**      | **0.8212**    | **0.7838** | **0.7838** | **0.7838** | **0.8678** |
 
-**🏆 Best Model:** Gradient Boosting achieved the highest accuracy of **81.56%** on the test data and demonstrated balanced precision and recall, making it the final selected model for deployment.
+**🏆 Best Model:** XGBoost, achieving the highest Test Accuracy **(0.8212)**, with balanced precision, recall, and F1 score., making it the final selected model for deployment.
 
 
 ## 📁 Artifacts
