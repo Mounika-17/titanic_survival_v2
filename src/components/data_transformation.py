@@ -10,7 +10,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler, OrdinalEncoder
 from sklearn.compose import ColumnTransformer
 
 from src.exception import CustomException
-from src.logger import logging
+from src.logger import logger
 from src.utils import save_object
 
 # -----------------------------
@@ -131,16 +131,9 @@ class Binner(BaseEstimator, TransformerMixin):
 # -----------------------------
 # Config
 # -----------------------------
-@dataclass
-class DataTransformationConfig:
-    # This defines where the preprocessing object (e.g., a fitted ColumnTransformer or Pipeline) will be saved after training.
-    preprocessor_obj_file_path = os.path.join('artifacts', "preprocessor.pkl")
+
 
 class DataTransformation:
-    def __init__(self):
-       # It will use the config object (DataTransformationConfig) to know where to save or load preprocessing objects.
-        self.data_transformation_config = DataTransformationConfig()
-
     def build_preprocessor(self, ordinal_columns, nominal_columns, numeric_features):
         preprocessor = ColumnTransformer(
             transformers=[
@@ -154,7 +147,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self, ordinal_columns, nominal_columns, numeric_features):
         try:
-            preprocessor = Pipeline([
+            pipeline = Pipeline([
                 ('custom_imputer', CustomImputer()),
                 ('outliers', OutlierHandler()),
                 ('age_binner', Binner("Age",
@@ -165,47 +158,7 @@ class DataTransformation:
                                        labels=["Low", "Mid", "High", "VeryHigh"])),
                 ('encode_scale', self.build_preprocessor(ordinal_columns, nominal_columns, numeric_features))
             ])
-            return preprocessor
-        except Exception as e:
-            raise CustomException(e, sys)
-
-    def initiate_data_transformation(self, train_path, test_path, ordinal_columns, nominal_columns, numeric_features, target_column):
-        try:
-            train_df = pd.read_csv(train_path)
-            test_df = pd.read_csv(test_path)
-
-            logging.info("Read train and test data completed")
-
-            preprocessing_obj = self.get_data_transformer_object(
-                ordinal_columns=ordinal_columns,
-                nominal_columns=nominal_columns,
-                numeric_features=numeric_features
-            )
-
-            input_feature_train_df = train_df.drop(columns=[target_column], axis=1)
-            target_feature_train_df = train_df[target_column]
-
-            input_feature_test_df = test_df.drop(columns=[target_column], axis=1)
-            target_feature_test_df = test_df[target_column]
-
-            logging.info("Applying preprocessing on train and test data")
-
-            input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df, target_feature_train_df)
-            input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
-
-            train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
-            test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
-
-            logging.info("Saving preprocessing object")
-            save_object(
-                file_path=self.data_transformation_config.preprocessor_obj_file_path,
-                obj=preprocessing_obj
-            )
-
-            return (
-                train_arr,
-                test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
-            )
+            return pipeline
+            logger.info("Preprocessing object created")
         except Exception as e:
             raise CustomException(e, sys)

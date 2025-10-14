@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from xgboost import XGBClassifier
+from sklearn.pipeline import Pipeline
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -19,7 +20,7 @@ from sklearn.metrics import (
 from sklearn.model_selection import GridSearchCV, KFold, cross_val_predict, cross_val_score
 
 from src.exception import CustomException
-from src.logger import logging
+from src.logger import logger
 from src.utils import save_object
 
 # cv_scores.mean() → Average accuracy across folds. Tells you the central tendency (how well the model performs on average).
@@ -47,15 +48,19 @@ class ModelTrainer:
         return score
 
 
-    def initiate_model_trainer(self, train_array, test_array):
+    def initiate_model_trainer(self, train_data_path, test_data_path, preprocessor,target_feature):
         try:
-            logging.info("Splitting train/test arrays")
-            X_train, y_train, X_test, y_test = (
-                train_array[:, :-1],
-                train_array[:, -1],
-                test_array[:, :-1],
-                test_array[:, -1]
-            )
+            logger.info("Splitting train/test arrays")
+            # Step 1: Load data
+            train_df = pd.read_csv(train_data_path)
+            test_df = pd.read_csv(test_data_path)
+
+            # Step 2: Separate features and target
+            target_column = target_feature
+            X_train = train_df.drop(columns=[target_column])
+            y_train = train_df[target_column]
+            X_test = test_df.drop(columns=[target_column])
+            y_test = test_df[target_column]
 
             # Dictionary of models and param grids
             models_and_params = {
@@ -122,10 +127,15 @@ class ModelTrainer:
 
             # Loop through models
             for model_name, (model, param_grid) in models_and_params.items():
-                logging.info(f"Running GridSearchCV for {model_name}")
+                logger.info(f"Running GridSearchCV for {model_name}")
+
+                pipeline = Pipeline(steps=[
+                    ("preprocessor", preprocessor),
+                    ("model", model)
+                ])
 
                 grid_search = GridSearchCV(
-                    estimator=model,
+                    estimator=pipeline,
                     param_grid=param_grid,
                     cv=cv,
                     scoring='accuracy',
@@ -136,7 +146,7 @@ class ModelTrainer:
                 best_model = grid_search.best_estimator_
                 cv_scores = cross_val_score(best_model, X_train, y_train, cv=cv, scoring="accuracy")
 
-                logging.info(f"{model_name} CV Accuracy: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")
+                logger.info(f"{model_name} CV Accuracy: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")
 
                 # Test evaluation
                 y_pred_test = best_model.predict(X_test)
@@ -152,7 +162,7 @@ class ModelTrainer:
                 f1 = f1_score(y_test, y_pred_test)
                 roc = roc_auc_score(y_test, y_proba_test) if y_proba_test is not None else None
 
-                logging.info(f"{model_name} Test Accuracy: {acc:.4f}, Precision: {prec:.4f}, Recall: {rec:.4f}, "
+                logger.info(f"{model_name} Test Accuracy: {acc:.4f}, Precision: {prec:.4f}, Recall: {rec:.4f}, "
                              f"F1: {f1:.4f}, ROC-AUC: {roc if roc else 'N/A'}")
                 score = self.composite_score(acc, f1, roc, cv_scores.std())
                 if score > best_overall_score:
@@ -192,7 +202,7 @@ class ModelTrainer:
                 obj=best_overall_model
             )
 
-            logging.info(f"Best overall model: {best_overall_results['model']} "
+            logger.info(f"Best overall model: {best_overall_results['model']} "
                          f"with Test Accuracy {best_overall_results['test_accuracy']:.4f}")
 
             return best_overall_results

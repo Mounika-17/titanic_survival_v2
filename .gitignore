@@ -3,6 +3,7 @@ notes.txt
 env/
 venv/
 .venv/
+titanicv2_env/
 
 # Ignore Python cache and build files
 __pycache__/
