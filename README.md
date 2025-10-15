@@ -1,3 +1,5 @@
+# 🆕 Note: In this version of the Titanic Survival Prediction project, the preprocessing and model training steps are integrated into a **single serialized pipeline (`model.pkl`)**, eliminating the need for a separate `preprocessor.pkl` file.  
+
 #  Titanic Survival Prediction | End-to-End Machine Learning Project
 
 This project predicts whether a passenger survived in the Titanic disaster using machine learning techniques.  
@@ -68,7 +70,8 @@ Performed in `notebook/eda_model_training.ipynb`:
 
 ### 4. Pipeline Creation
 - Built using `Pipeline` from `sklearn`  
-- Saved preprocessor and model as `.pkl` files in `artifacts/`  
+- In this version, preprocessing and model training are combined into a **single pipeline**  
+- The complete pipeline is saved as `model.pkl` in the `artifacts/` directory 
 
 ### 5. Flask Application
 - Developed a web app (`application.py`)  
@@ -124,9 +127,8 @@ I evaluated multiple machine learning models to predict the target outcome. The 
 
 
 ## 📁 Artifacts
-model.pkl – Trained ML model  
-preprocessor.pkl – Feature transformation pipeline  
-train.csv & test.csv – Datasets used for training and testing  
+model.pkl – Combined preprocessing and trained ML pipeline  
+train.csv & test.csv – Datasets used for training and testing 
 
 ## 🛠️ Logging and Exception Handling  
 All logs are stored in the logs/ directory.  
