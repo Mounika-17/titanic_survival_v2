@@ -1,4 +1,5 @@
-# 🆕 Note: In this version of the Titanic Survival Prediction project, the preprocessing and model training steps are integrated into a **single serialized pipeline (`model.pkl`)**, eliminating the need for a separate `preprocessor.pkl` file.  
+# 🆕 Note:
+In this version of the Titanic Survival Prediction project, the preprocessing and model training steps are integrated into a **single serialized pipeline (`model.pkl`)**, eliminating the need for a separate `preprocessor.pkl` file.  
 
 #  Titanic Survival Prediction | End-to-End Machine Learning Project
 
@@ -71,7 +72,37 @@ Performed in `notebook/eda_model_training.ipynb`:
 ### 4. Pipeline Creation
 - Built using `Pipeline` from `sklearn`  
 - In this version, preprocessing and model training are combined into a **single pipeline**  
-- The complete pipeline is saved as `model.pkl` in the `artifacts/` directory 
+- The complete pipeline is saved as `model.pkl` in the `artifacts/` directory
+
+### ⚙️ Why Preprocessing and Model Training Are Combined in a Single Pipeline
+
+In this version of the project, the **preprocessing** and **model training** steps are integrated into a single pipeline and saved together as `model.pkl`.  
+This design was chosen to ensure **proper cross-validation** and **avoid data leakage** during model selection.
+
+#### 🔍 Explanation
+
+When performing model selection using `GridSearchCV`, the data is internally split into multiple folds for cross-validation.  
+If preprocessing (such as encoding, scaling, or imputation) is done **before** cross-validation, the transformations are fitted on the entire dataset — including data from validation folds.  
+This leads to **data leakage**, causing the model to see information from the validation set during training, which artificially boosts performance metrics.
+
+To prevent this, the pipeline is constructed as follows:
+
+```python
+pipeline = Pipeline(steps=[
+    ("preprocessor", preprocessor),
+    ("model", model)
+])
+
+Then, GridSearchCV is applied on the full pipeline, ensuring that: 
+
+- For each CV split, preprocessing is fitted only on the training fold 
+- The corresponding validation fold remains unseen during transformation and training 
+- All model hyperparameters are searched correctly without leakage 
+
+✅ Benefits 
+- Prevents data leakage in internal CV 
+- Ensures fair and reproducible evaluation metrics 
+- Simplifies deployment — the single model.pkl file contains both preprocessing and model steps 
 
 ### 5. Flask Application
 - Developed a web app (`application.py`)  
