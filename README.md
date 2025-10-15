@@ -91,8 +91,8 @@ To prevent this, the pipeline is constructed as follows:
 pipeline = Pipeline(steps=[
     ("preprocessor", preprocessor),
     ("model", model)
-])
 ```python
+])
 
 
 Then, GridSearchCV is applied on the full pipeline, ensuring that: 
