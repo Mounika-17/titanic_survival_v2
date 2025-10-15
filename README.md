@@ -104,6 +104,7 @@ Then, GridSearchCV is applied on the full pipeline, ensuring that:
 - Ensures fair and reproducible evaluation metrics 
 - Simplifies deployment — the single model.pkl file contains both preprocessing and model steps 
 
+
 ### 5. Flask Application
 - Developed a web app (`application.py`)  
 - Takes passenger details as input and predicts survival  
