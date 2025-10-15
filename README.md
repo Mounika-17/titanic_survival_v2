@@ -92,6 +92,8 @@ pipeline = Pipeline(steps=[
     ("preprocessor", preprocessor),
     ("model", model)
 ])
+```python
+
 
 Then, GridSearchCV is applied on the full pipeline, ensuring that: 
 
@@ -102,15 +104,9 @@ Then, GridSearchCV is applied on the full pipeline, ensuring that:
 ✅ Benefits 
 - Prevents data leakage in internal CV 
 - Ensures fair and reproducible evaluation metrics 
-- Simplifies deployment — the single model.pkl file contains both preprocessing and model steps 
+- Simplifies deployment — the single model.pkl file contains both preprocessing and model steps
 
 
----
-
-### 🧠 The Fix
-The **closing triple backticks (` ``` `)** appear right after this line:
-```python
-])
 
 ### 5. Flask Application
 - Developed a web app (`application.py`)  
