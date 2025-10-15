@@ -92,7 +92,7 @@ pipeline = Pipeline(steps=[
     ("preprocessor", preprocessor),
     ("model", model)
 ])
-
+```
 
 
 Then, GridSearchCV is applied on the full pipeline, ensuring that: 
