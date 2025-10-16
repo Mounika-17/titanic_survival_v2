@@ -8,25 +8,42 @@
             font-family: Arial, sans-serif;
             margin: 40px;
         }
+
         h2 {
             text-align: center;
             color: #333;
         }
+
         form {
             max-width: 500px;
             margin: 20px auto;
         }
+
         label {
             display: block;
             margin-top: 15px;
             font-weight: bold;
         }
+
         input, select {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
             box-sizing: border-box;
         }
+
+        /* Remove spinner arrows from number inputs (Chrome, Edge, Safari, Firefox) */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield; /* For Firefox */
+            appearance: textfield; /* Standard compatibility */
+        }
+
         button {
             margin-top: 20px;
             padding: 10px;
@@ -37,18 +54,22 @@
             border: none;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #45a049;
         }
+
         .result {
             text-align: center;
             margin-top: 30px;
             font-size: 20px;
         }
+
         .survived {
             color: green;
             font-weight: bold;
         }
+
         .not-survived {
             color: red;
             font-weight: bold;
@@ -57,6 +78,7 @@
 </head>
 <body>
     <h2>Titanic Survival Prediction</h2>
+
     <form action="{{ url_for('predict_datapoint')}}" method="post">
         <label for="pclass">Pclass</label>
         <select id="pclass" name="Pclass" required>
@@ -130,7 +152,7 @@
         <button type="submit">Predict Survival</button>
     </form>
 
-    <div class="result">
+    <div id="result" class="result">
         {% if results is defined and results is not none %}
             {% if results == 1 %}
                 <p class="survived">Prediction: Survived</p>
@@ -139,5 +161,15 @@
             {% endif %}
         {% endif %}
     </div>
+
+    <!-- Scroll Fix Script -->
+    <script>
+        window.onload = function() {
+            const result = document.getElementById("result");
+            if (result && result.innerText.trim() !== "") {
+                result.scrollIntoView({ behavior: "smooth" });
+            }
+        };
+    </script>
 </body>
 </html>
