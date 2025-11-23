@@ -19,7 +19,7 @@ This project follows a **complete ML lifecycle**, including:
 3. Feature Engineering  
 4. Model Training and Evaluation  
 5. Building a Reusable Pipeline  
-6. Deployment on AWS Elastic Beanstalk  
+6.Running a Local Flask Application   
 
 ---
 
@@ -30,7 +30,6 @@ This project follows a **complete ML lifecycle**, including:
 3. Logging and exception handling  
 4. Modular code structure (reusable components and utilities)  
 5. Flask-based web application for predictions  
-6. AWS Beanstalk deployment setup  
 
 ---
 
@@ -42,7 +41,6 @@ This project follows a **complete ML lifecycle**, including:
 3. Pandas, NumPy  
 4. Matplotlib, Seaborn  
 5. Flask  
-6. AWS Elastic Beanstalk  
 
 ### Environment & Version Control
 1. Virtual Environment (`venv` or `conda`)  
@@ -112,9 +110,7 @@ Then, GridSearchCV is applied on the full pipeline, ensuring that:
 - Developed a web app (`application.py`)  
 - Takes passenger details as input and predicts survival  
 
-### 6. Deployment
-- Containerized Flask app  
-- Deployed to AWS Elastic Beanstalk   
+
 
 ## ⚙️ Installation and Setup  
 ### 1. Clone the repository  
@@ -135,13 +131,6 @@ python application.py
 ### 5. Open the app  
 Navigate to http://127.0.0.1:5000/ in your browser.  
 
-## 📦 Deployment (AWS Elastic Beanstalk)  
-Create an AWS account and install the AWS CLI.  
-Initialize Elastic Beanstalk:  
-eb init  
-eb create  
-eb open  
-The app will be live on your AWS URL.  
 
 
 ## 🧪 Model Performance
@@ -172,7 +161,7 @@ Custom logger.py and exception.py modules handle runtime events and errors grace
 ## 📘 Future Enhancements  
 Add more models for comparison  
 Integrate frontend UI improvements  
-Deploy via Docker + AWS ECS  
+Containerize with Docker for easier deployment
 
 ## 🤝 Contributing  
 Contributions are welcome!  
